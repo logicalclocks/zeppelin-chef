@@ -1,0 +1,42 @@
+dependencies: 
+  - recipe: hadoop::install
+  - recipe: spark::install
+    local:
+      - hadoop::install
+  - recipe: zeppelin::install
+    global:
+      - spark::install
+  - recipe: hadoop::nn
+    local:
+      - hadoop::install
+  - recipe: hadoop::rm
+    local:
+      - hadoop::install
+    global:  
+      - hadoop::nn
+  - recipe: hadoop::dn
+    local:
+      - hadoop::install
+    global:  
+      - hadoop::nn
+  - recipe: hadoop::nm
+    local:
+      - hadoop::install
+    global:  
+      - hadoop::rm
+  - recipe: hadoop::jhs
+    local:
+      - hadoop::install
+    global:  
+      - hadoop::nn
+      - hadoop::dn
+  - recipe: spark::master
+    local:
+      - spark::install
+  - recipe: spark::slave
+    local:
+      - spark::install
+  - recipe: zeppelin::default
+    global:  
+      - spark::master
+      - spark::slave
