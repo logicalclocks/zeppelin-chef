@@ -7,11 +7,11 @@
 # All rights reserved
 #
 
-for p in %w{ git scala }
-  package p do
-    action :install
-  end
-end
+# for p in %w{ git scala }
+#   package p do
+#     action :install
+#   end
+# end
 
 package_url = "#{node[:zeppelin][:url]}"
 base_package_filename = File.basename(package_url)
@@ -42,9 +42,6 @@ link node[:zeppelin][:base_dir] do
   to node[:zeppelin][:home]
 end
 
-
-libpath = File.expand_path '../../../kagent/libraries', __FILE__
-require File.join(libpath, 'inifile')
 
 my_ip = my_private_ip()
 spark_master_ip = private_recipe_ip("spark","master")

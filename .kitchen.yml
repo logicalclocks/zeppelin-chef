@@ -12,7 +12,6 @@ provisioner:
   name: chef_solo
 
 platforms:
-#  - name: ubuntu-12.04
   - name: ubuntu-14.04
 #  - name: centos-6.5
 
@@ -22,16 +21,19 @@ suites:
 suites:
   - name: default
     run_list:
-      - recipe[hadoop::install]
+      - recipe[hops::install]
       - recipe[spark::install]
       - recipe[zeppelin::install]
-      - recipe[hadoop::nn]
-      - recipe[hadoop::dn]
+      - recipe[hops::nn]
+      - recipe[hops::dn]
+      - recipe[hops::rm]
+      - recipe[hops::nm]
+      - recipe[hops::jhs]
       - recipe[spark::master]
       - recipe[spark::slave]
       - recipe[zeppelin::default]
     attributes:
-         hadoop:
+         hops:
             user: glassfish
             nn:
                private_ips: ["10.0.2.15"]
@@ -39,7 +41,15 @@ suites:
             dn:
                private_ips: ["10.0.2.15"]
                public_ips: ["10.0.2.15"]
-#            native_libraries: "true"
+            rm:
+               private_ips: ["10.0.2.15"]
+               public_ips: ["10.0.2.15"]
+            nm:
+               private_ips: ["10.0.2.15"]
+               public_ips: ["10.0.2.15"]
+            jhs:
+               private_ips: ["10.0.2.15"]
+               public_ips: ["10.0.2.15"]
          spark:
             master:
                private_ips: ["10.0.2.15"]

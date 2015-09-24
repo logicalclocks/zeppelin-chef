@@ -8,6 +8,7 @@ version          "1.0"
 
 
 depends          "spark"
+depends          "hops"
 depends          "hadoop"
 depends          "kagent"
 
