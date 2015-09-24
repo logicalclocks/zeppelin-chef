@@ -2,7 +2,7 @@ include_attribute "kagent"
 include_attribute "hops"
 include_attribute "hadoop"
 
-default[:zeppelin][:version]             = "0.5.0-SNAPSHOT"
+default[:zeppelin][:version]             = "0.5.0"
 default[:spark][:version]                = "1.3.1"
 default[:hadoop][:version]               = "2.4"
 default[:scala][:version]                = "2.10"

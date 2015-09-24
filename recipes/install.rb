@@ -7,12 +7,6 @@
 # All rights reserved
 #
 
-# for p in %w{ git scala }
-#   package p do
-#     action :install
-#   end
-# end
-
 package_url = "#{node[:zeppelin][:url]}"
 base_package_filename = File.basename(package_url)
 cached_package_filename = "#{Chef::Config[:file_cache_path]}/#{base_package_filename}"
