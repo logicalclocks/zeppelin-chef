@@ -11,6 +11,7 @@ depends          "spark"
 depends          "hops"
 depends          "hadoop"
 depends          "kagent"
+depends          "hopsworks"
 
 recipe           "install", "Installs Zeppelin binaries"
 recipe           "default", "Starts a Zeppelin master"

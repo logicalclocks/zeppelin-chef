@@ -2,8 +2,10 @@ dependencies:
   - recipe: zeppelin::install
     local:
       - hops::install
+      - hopsworks::install
       - spark::install
   - recipe: zeppelin::default
     global:  
       - spark::master
       - spark::slave
+      - hopsworks::default
