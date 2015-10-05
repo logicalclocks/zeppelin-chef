@@ -50,4 +50,3 @@ template"#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
         :spark_master => spark_master_ip
            })
 end
-
