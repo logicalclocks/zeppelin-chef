@@ -39,8 +39,9 @@ end
 
 my_ip = my_private_ip()
 spark_master_ip = private_recipe_ip("spark","master")
+flink_jobmgr_ip = private_recipe_ip("flink","jobmanager")
 
-template"#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
+template "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
   source "zeppelin-env.sh.erb"
   owner node[:zeppelin][:user]
   group node[:zeppelin][:group]
@@ -48,5 +49,20 @@ template"#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
   variables({ 
         :private_ip => my_ip,
         :spark_master => spark_master_ip
+           })
+end
+
+file "#{node[:zeppelin][:home]}/conf/interpreter.json" do
+ action :delete
+end
+
+template "#{node[:zeppelin][:home]}/conf/interpreter.json" do
+  source "interpreter.json.erb"
+  owner node[:zeppelin][:user]
+  group node[:zeppelin][:group]
+  mode 0655
+  variables({ 
+        :spark_master_ip => spark_master_ip,
+        :flink_jobmgr_ip => flink_jobmgr_ip
            })
 end
