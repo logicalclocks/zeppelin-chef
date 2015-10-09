@@ -62,7 +62,7 @@ template "#{node[:zeppelin][:home]}/conf/interpreter.json" do
   group node[:zeppelin][:group]
   mode 0655
   variables({ 
-        :spark_master_ip => spark_master_ip,
+        :spark_master_ip => "spark://#{spark_master_ip}:7077",
         :spark_home => node[:spark][:home],
         :flink_jobmgr_ip => flink_jobmgr_ip
            })
