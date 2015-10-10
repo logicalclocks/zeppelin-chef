@@ -1,5 +1,5 @@
 
-zeppelin_start "master" do
- action :start
-end
+# zeppelin_start "master" do
+#  action :start
+# end
 
