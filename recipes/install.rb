@@ -23,7 +23,8 @@ bash 'extract-zeppelin' do
         user "root"
         group node[:zeppelin][:group]
         code <<-EOH
-                tar -xf #{cached_package_filename} -C #{node[:zeppelin][:dir]}
+                tar -xf #{cached_package_filename} -C #{Chef::Config[:file_cache_path]}
+                mv #{Chef::Config[:file_cache_path]}/zeppelin-#{node[:zeppelin][:version]} #{node[:zeppelin][:dir]}/
                 chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:base_dir]}
                 touch #{node[:zeppelin][:dir]}/.zeppelin_extracted_#{node[:zeppelin][:version]}
         EOH
