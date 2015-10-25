@@ -20,10 +20,11 @@ end
 
 # Extract Zeppelin
 bash 'extract-zeppelin' do
-        user node[:zeppelin][:user]
+        user "root"
         group node[:zeppelin][:group]
         code <<-EOH
                 tar -xf #{cached_package_filename} -C #{node[:zeppelin][:dir]}
+                chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:base_dir]}
                 touch #{node[:zeppelin][:dir]}/.zeppelin_extracted_#{node[:zeppelin][:version]}
         EOH
      not_if { ::File.exists?( "#{node[:zeppelin][:dir]}/.zeppelin_extracted_#{node[:zeppelin][:version]}" ) }
