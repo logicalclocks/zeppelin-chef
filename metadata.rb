@@ -17,3 +17,8 @@ depends          "elastic"
 
 recipe           "install", "Installs Zeppelin binaries"
 recipe           "default", "Starts a Zeppelin master"
+
+attribute "zeppelin/user",
+          :description => "User to install/run zeppelin as",
+          :type => 'string'
+
