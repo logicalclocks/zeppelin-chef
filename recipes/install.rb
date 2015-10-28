@@ -26,6 +26,7 @@ bash 'extract-zeppelin' do
                 tar -xf #{cached_package_filename} -C #{Chef::Config[:file_cache_path]}
                 mv #{Chef::Config[:file_cache_path]}/zeppelin-#{node[:zeppelin][:version]} #{node[:zeppelin][:dir]}/
                 chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:base_dir]}
+                chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:dir]}/zeppelin-#{node[:zeppelin][:version]}
                 touch #{node[:zeppelin][:dir]}/.zeppelin_extracted_#{node[:zeppelin][:version]}
         EOH
      not_if { ::File.exists?( "#{node[:zeppelin][:dir]}/.zeppelin_extracted_#{node[:zeppelin][:version]}" ) }
