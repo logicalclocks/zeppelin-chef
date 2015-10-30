@@ -4,7 +4,7 @@ action :start do
     user node[:zeppelin][:user]
     group node[:zeppelin][:group]
     code <<-EOF
-      #{node[:zeppelin][:home]}
+      cd #{node[:zeppelin][:home]}
       ./bin/zeppelin-daemon.sh start
     EOF
   end

@@ -1,7 +1,10 @@
 include_attribute "kagent"
 include_attribute "hops"
 include_attribute "hadoop"
+include_attribute "spark"
+include_attribute "flink"
 
+#default[:zeppelin][:version]             = "0.6.0"
 default[:zeppelin][:version]             = "0.5.0"
 default[:spark][:version]                = "1.3.1"
 default[:hadoop][:version]               = "2.4"

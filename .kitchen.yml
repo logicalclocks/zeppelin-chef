@@ -9,11 +9,11 @@ driver:
     natdnsproxy1: "on"
     nictype1: "virtio"
   network:
-  - ["forwarded_port", {guest: 8080, host: 9191}]
-  - ["forwarded_port", {guest: 8181, host: 8888}]
-  - ["forwarded_port", {guest: 4848, host: 4444}]
-  - ["forwarded_port", {guest: 50070, host: 51070}]
-  - ["forwarded_port", {guest: 50075, host: 51075}]
+  - ["forwarded_port", {guest: 8080, host: 18080}]
+  - ["forwarded_port", {guest: 8181, host: 18181}]
+  - ["forwarded_port", {guest: 4848, host: 14848}]
+  - ["forwarded_port", {guest: 50070, host: 40070}]
+  - ["forwarded_port", {guest: 50075, host: 41075}]
 
 provisioner:
   name: chef_solo
@@ -37,7 +37,6 @@ suites:
       - recipe[ndb::mgmd]
       - recipe[ndb::ndbd]
       - recipe[ndb::mysqld]
-      - recipe[ndb::memcached]
       - recipe[hops::ndb]
       - recipe[hops::nn]
       - recipe[hops::dn]
@@ -46,15 +45,10 @@ suites:
       - recipe[hops::jhs]
       - recipe[hopsworks]
       - recipe[spark::master]
-      - recipe[spark::slave]
+      - recipe[spark::worker]
       - recipe[zeppelin::default]
     attributes:
          vagrant: "true"
-         authorization:
-            sudo:
-              users: ['vagrant']
-              passwordless: true
-              include_sudoers_d: true
          hopsworks:
             default:
                 private_ips: ["10.0.2.15"]
@@ -105,9 +99,10 @@ suites:
                private_ips: ["10.0.2.15"]
 #            user_envs: "false"
          spark:
+            user: glassfish
             master:
                private_ips: ["10.0.2.15"]
-            slave:
+            worker:
                private_ips: ["10.0.2.15"]
             private_ips: ["10.0.2.15"]
             public_ips: ["10.0.2.15"]
@@ -116,5 +111,10 @@ suites:
                private_ips: ["10.0.2.15"]
             private_ips: ["10.0.2.15"]
             public_ips: ["10.0.2.15"]
+            dir: "/tmp"
+            user: "glassfish"
+         elastic:
+            default:
+               private_ips: ["10.0.2.15"]
          private_ips: ["10.0.2.15"]
          public_ips: ["10.0.2.15"]
