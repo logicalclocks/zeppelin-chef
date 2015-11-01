@@ -67,8 +67,10 @@ template "#{node[:zeppelin][:home]}/conf/interpreter.json" do
   mode 0655
   variables({ 
         :spark_master_ip => "spark://#{spark_master_ip}:7077",
-        :spark_home => node[:hadoop][:base_dir],
+        :hadoop_home => node[:hadoop][:base_dir],
         :spark_home => node[:spark][:base_dir],
+        :zeppelin_home => node[:zeppelin][:base_dir],
+        :version => "0.5.1-incubating-SNAPSHOT",
         :flink_jobmgr_ip => flink_jobmgr_ip
            })
 end
