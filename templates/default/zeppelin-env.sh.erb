@@ -3,7 +3,8 @@ export ZEPPELIN_NOTEBOOK_DIR=notebook
 export ZEPPELIN_INTERPRETERS=spark:com.nflabs.zeppelin.spark.SparkInterpreter,sql:com.nflabs.zeppelin.spark.SparkSqlInterpreter,md:com.nflabs.zeppelin.markdown.Markdown,sh:com.nflabs.zeppelin.shell.ShellInterpreter,org.apache.zeppelin.flink.FlinkInterpreter
 export ZEPPELIN_INTERPRETER_DIR=interpreter
 export MASTER=<%= @spark_master %>
+#export ZEPPELIN_JAVA_OPTS="-Dspark.jars=/,/mylib2.jar -Dspark.files=/myfile1.dat,/myfile2.dat"
 export ZEPPELIN_JAVA_OPTS=""
-export HADOOP_CONF_DIR=<%= @hadoop_conf_dir %>
 
+export HADOOP_CONF_DIR=<%= @hadoop_conf_dir %>
 
