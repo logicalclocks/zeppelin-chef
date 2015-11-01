@@ -81,7 +81,14 @@ template "#{node[:zeppelin][:home]}/bin/alive.sh" do
   group node[:zeppelin][:group]
   mode 0655
   variables({ 
-
-
            })
+end
+
+directory "#{node[:zeppelin][:home]}/run" do
+  owner node[:zeppelin][:user]
+  group node[:zeppelin][:group]
+  mode 0655
+  mode "755"
+  action :create
+  recursive true
 end
