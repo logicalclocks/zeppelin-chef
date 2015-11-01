@@ -52,7 +52,7 @@ template "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
   variables({ 
         :private_ip => my_ip,
         :spark_master => spark_master_ip,
-        :hadoop_conf_dir => node[:hadoop][:dir] + "/hadoop/etc/hadoop",
+        :hadoop_conf_dir => node[:hadoop][:dir] + "/hadoop/etc/hadoop"
            })
 end
 
@@ -70,5 +70,16 @@ template "#{node[:zeppelin][:home]}/conf/interpreter.json" do
         :spark_home => node[:hadoop][:base_dir],
         :spark_home => node[:spark][:base_dir],
         :flink_jobmgr_ip => flink_jobmgr_ip
+           })
+end
+
+template "#{node[:zeppelin][:home]}/bin/alive.sh" do
+  source "alive.sh.erb"
+  owner node[:zeppelin][:user]
+  group node[:zeppelin][:group]
+  mode 0655
+  variables({ 
+
+
            })
 end
