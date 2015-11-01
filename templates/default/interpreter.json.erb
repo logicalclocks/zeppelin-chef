@@ -49,8 +49,8 @@
       "name": "spark",
       "group": "spark",
       "properties": {
-        "spark.cores.max": "",
-        "spark.yarn.jar": "",
+        "spark.cores.max": "4",
+        "spark.yarn.jar": "<%= @spark_home %>/spark.jar",
         "master": "<%= @spark_master_ip %>",
         "zeppelin.spark.maxResult": "1000",
         "zeppelin.dep.localrepo": "local-repo",

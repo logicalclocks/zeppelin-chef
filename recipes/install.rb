@@ -51,7 +51,8 @@ template "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
   mode 0655
   variables({ 
         :private_ip => my_ip,
-        :spark_master => spark_master_ip
+        :spark_master => spark_master_ip,
+        :hadoop_conf_dir => node[:hadoop][:dir] + "/hadoop/etc/hadoop",
            })
 end
 
@@ -66,7 +67,8 @@ template "#{node[:zeppelin][:home]}/conf/interpreter.json" do
   mode 0655
   variables({ 
         :spark_master_ip => "spark://#{spark_master_ip}:7077",
-        :spark_home => node[:spark][:home],
+        :spark_home => node[:hadoop][:base_dir],
+        :spark_home => node[:spark][:base_dir],
         :flink_jobmgr_ip => flink_jobmgr_ip
            })
 end
