@@ -90,5 +90,12 @@ directory "#{node[:zeppelin][:home]}/run" do
   mode 0655
   mode "755"
   action :create
-  recursive true
+end
+
+directory "#{node[:zeppelin][:home]}/logs" do
+  owner node[:zeppelin][:user]
+  group node[:zeppelin][:group]
+  mode 0655
+  mode "755"
+  action :create
 end
