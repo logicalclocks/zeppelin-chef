@@ -12,7 +12,7 @@ depends          "spark"
 depends          "hops"
 depends          "hadoop"
 depends          "kagent"
-depends          "hopsworks"
+# depends          "hopsworks"
 depends          "elastic"
 
 recipe           "install", "Installs Zeppelin binaries"
