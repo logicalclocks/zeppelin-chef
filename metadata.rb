@@ -20,3 +20,7 @@ attribute "zeppelin/user",
           :description => "User to install/run zeppelin as",
           :type => 'string'
 
+attribute "zeppelin/dir",
+          :description => "zeppelin base dir",
+          :type => 'string'
+
