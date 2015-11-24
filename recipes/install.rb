@@ -79,9 +79,8 @@ template "#{node[:zeppelin][:home]}/bin/alive.sh" do
   source "alive.sh.erb"
   owner node[:zeppelin][:user]
   group node[:zeppelin][:group]
-  mode 0655
-  variables({ 
-           })
+  mode 0755
+  action :create
 end
 
 directory "#{node[:zeppelin][:home]}/run" do
