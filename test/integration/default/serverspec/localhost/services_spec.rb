@@ -13,6 +13,5 @@ end
 describe command("jps") do
   its (:stdout) { should match /Master/ }
   its (:stdout) { should match /Worker/ }
-  its (:stdout) { should match /ZeppelinServer/ }
 end
 
