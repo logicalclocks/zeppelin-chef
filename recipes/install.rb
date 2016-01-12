@@ -26,6 +26,7 @@ bash 'extract-zeppelin' do
                 set -e
                 tar -xf #{cached_package_filename} -C #{Chef::Config[:file_cache_path]}
                 mv #{Chef::Config[:file_cache_path]}/#{node[:zeppelin][:name]}/* #{node[:zeppelin][:dir]}/
+                mkdir -p #{node[:zeppelin][:home]}/run
                 chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:home]}
                 touch #{node[:zeppelin][:home]}/.zeppelin_extracted_#{node[:zeppelin][:version]}
         EOH
