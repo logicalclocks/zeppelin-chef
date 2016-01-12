@@ -23,13 +23,13 @@ bash 'extract-zeppelin' do
         user "root"
         group node[:zeppelin][:group]
         code <<-EOH
+                set -e
                 tar -xf #{cached_package_filename} -C #{Chef::Config[:file_cache_path]}
-                mv #{Chef::Config[:file_cache_path]}/zeppelin-#{node[:zeppelin][:version]} #{node[:zeppelin][:dir]}/
-                chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:base_dir]}
-                chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:dir]}/zeppelin-#{node[:zeppelin][:version]}
-                touch #{node[:zeppelin][:dir]}/.zeppelin_extracted_#{node[:zeppelin][:version]}
+                mv #{Chef::Config[:file_cache_path]}/#{node[:zeppelin][:name]}/* #{node[:zeppelin][:dir]}/
+                chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:home]}
+                touch #{node[:zeppelin][:home]}/.zeppelin_extracted_#{node[:zeppelin][:version]}
         EOH
-     not_if { ::File.exists?( "#{node[:zeppelin][:dir]}/.zeppelin_extracted_#{node[:zeppelin][:version]}" ) }
+     not_if { ::File.exists?( "#{node[:zeppelin][:home]}/.zeppelin_extracted_#{node[:zeppelin][:version]}" ) }
 end
 
 
@@ -43,6 +43,10 @@ end
 my_ip = my_private_ip()
 spark_master_ip = private_recipe_ip("spark","master")
 flink_jobmgr_ip = private_recipe_ip("flink","jobmanager")
+
+file "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
+ action :delete
+end
 
 template "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
   source "zeppelin-env.sh.erb"
@@ -70,7 +74,7 @@ template "#{node[:zeppelin][:home]}/conf/interpreter.json" do
         :hadoop_home => node[:hadoop][:base_dir],
         :spark_home => node[:spark][:base_dir],
         :zeppelin_home => node[:zeppelin][:base_dir],
-        :version => "0.5.1-incubating-SNAPSHOT",
+        :version => node[:zeppelin][:version],
         :flink_jobmgr_ip => flink_jobmgr_ip
            })
 end
