@@ -5,7 +5,7 @@ include_attribute "spark"
 include_attribute "flink"
 
 default[:zeppelin][:version]             = "0.5.0-incubating"
-default[:zeppelin][:spark_version]       = "1.4.0"
+default[:zeppelin][:spark_version]       = "1.3.1"
 default[:zeppelin][:hadoop_version]      = "2.3"
 default[:zeppelin][:name]                = "zeppelin-#{node[:zeppelin][:version]}-bin-spark-#{node[:zeppelin][:spark_version]}_hadoop-#{node[:zeppelin][:hadoop_version]}"
 default[:zeppelin][:user]                = node[:hadoop][:yarn][:user]
