@@ -1,56 +1,112 @@
 {
   "interpreterSettings": {
-    "2AQTQW4X5": {
-      "id": "2AQTQW4X5",
-      "name": "angular",
-      "group": "angular",
-      "properties": {},
-      "interpreterGroup": [],
-      "option": {
-        "remote": true
-      }
-    },
-    "2ATRFHJDS": {
-      "id": "2ATRFHJDS",
-      "name": "md",
-      "group": "md",
-      "properties": {},
-      "interpreterGroup": [
-        {
-          "class": "org.apache.zeppelin.markdown.Markdown",
-          "name": "md"
-        }
-      ],
-      "option": {
-        "remote": true
-      }
-    },
-    "2AT3BADT8": {
-      "id": "2AT3BADT8",
-      "name": "flink",
-      "group": "flink",
+    "2B5PXPWYC": {
+      "id": "2B5PXPWYC",
+      "name": "hive",
+      "group": "hive",
       "properties": {
-        "local": "false",
-        "jobmanager.rpc.address": "<%= @flink_jobmgr_ip %>",
-        "jobmanager.rpc.port": "6123"
+        "hive.hiveserver2.url": "jdbc:hive2://localhost:10000",
+        "hive.hiveserver2.password": "",
+        "hive.hiveserver2.user": "hive"
       },
       "interpreterGroup": [
         {
-          "class": "org.apache.zeppelin.flink.FlinkInterpreter",
-          "name": "flink"
+          "class": "org.apache.zeppelin.hive.HiveInterpreter",
+          "name": "hql"
         }
       ],
       "option": {
         "remote": true
       }
     },
-    "2ARAJA4SU": {
-      "id": "2ARAJA4SU",
+    "2B7PRXS56": {
+      "id": "2B7PRXS56",
+      "name": "angular",
+      "group": "angular",
+      "properties": {},
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.angular.AngularInterpreter",
+          "name": "angular"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B6C4NRWY": {
+      "id": "2B6C4NRWY",
+      "name": "psql",
+      "group": "psql",
+      "properties": {
+        "postgresql.driver.name": "org.postgresql.Driver",
+        "postgresql.password": "",
+        "postgresql.url": "jdbc:postgresql://localhost:5432/",
+        "postgresql.max.result": "1000",
+        "postgresql.user": "gpadmin"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.postgresql.PostgreSqlInterpreter",
+          "name": "sql"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B5F6ZH3M": {
+      "id": "2B5F6ZH3M",
+      "name": "kylin",
+      "group": "kylin",
+      "properties": {
+        "kylin.api.user": "ADMIN",
+        "kylin.query.limit": "5000",
+        "kylin.api.password": "KYLIN",
+        "kylin.query.offset": "0",
+        "kylin.query.project": "default",
+        "kylin.api.url": "http://\u003chost\u003e:\u003cport\u003e/kylin/api/query",
+        "kylin.query.ispartial": "true"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.kylin.KylinInterpreter",
+          "name": "kylin"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B6VSUZW2": {
+      "id": "2B6VSUZW2",
+      "name": "lens",
+      "group": "lens",
+      "properties": {
+        "lens.session.cluster.user": "default",
+        "zeppelin.lens.maxResults": "1000",
+        "lens.query.enable.persistent.resultset": "false",
+        "lens.client.dbname": "default",
+        "zeppelin.lens.maxThreads": "10",
+        "lens.server.base.url": "http://\u003chostname\u003e:\u003cport\u003e/lensapi",
+        "zeppelin.lens.run.concurrent": "true"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.lens.LensInterpreter",
+          "name": "lens"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B6FV27N7": {
+      "id": "2B6FV27N7",
       "name": "spark",
       "group": "spark",
       "properties": {
-        "spark.cores.max": "4",
-        "spark.yarn.jar": "<%= @zeppelin_home %>/interpreter/spark/zeppelin-spark-<%= @version %>.jar",
+        "spark.cores.max": "",
         "master": "yarn-client",
         "zeppelin.spark.maxResult": "1000",
         "zeppelin.dep.localrepo": "local-repo",
@@ -58,9 +114,9 @@
         "spark.executor.memory": "512m",
         "zeppelin.spark.useHiveContext": "true",
         "args": "",
-        "spark.home": "<%= @spark_home %>",
         "zeppelin.spark.concurrentSQL": "false",
-        "zeppelin.pyspark.python": "python"
+        "zeppelin.pyspark.python": "python",
+        "zeppelin.dep.additionalRemoteRepository": "spark-packages,http://dl.bintray.com/spark-packages/maven,false;"
       },
       "interpreterGroup": [
         {
@@ -84,28 +140,105 @@
         "remote": true
       }
     },
-    "2ASM6TCXA": {
-      "id": "2ASM6TCXA",
-      "name": "ignite",
-      "group": "ignite",
+    "2B4PQAWZX": {
+      "id": "2B4PQAWZX",
+      "name": "md",
+      "group": "md",
       "properties": {},
-      "interpreterGroup": [],
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.markdown.Markdown",
+          "name": "md"
+        }
+      ],
       "option": {
         "remote": true
       }
     },
-    "2ATRKM335": {
-      "id": "2ATRKM335",
+    "2B4X62CQ2": {
+      "id": "2B4X62CQ2",
       "name": "tajo",
       "group": "tajo",
-      "properties": {},
-      "interpreterGroup": [],
+      "properties": {
+        "tajo.jdbc.uri": "jdbc:tajo://localhost:26002/default"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.tajo.TajoInterpreter",
+          "name": "tql"
+        }
+      ],
       "option": {
         "remote": true
       }
     },
-    "2AS95YRHK": {
-      "id": "2AS95YRHK",
+    "2B889CRM2": {
+      "id": "2B889CRM2",
+      "name": "flink",
+      "group": "flink",
+      "properties": {
+        "port": "6123",
+        "host": "local"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.flink.FlinkInterpreter",
+          "name": "flink"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B77F5WPH": {
+      "id": "2B77F5WPH",
+      "name": "cassandra",
+      "group": "cassandra",
+      "properties": {
+        "cassandra.query.default.consistency": "ONE",
+        "cassandra.pooling.max.connection.per.host.local": "8",
+        "cassandra.load.balancing.policy": "DEFAULT",
+        "cassandra.pooling.new.connection.threshold.local": "100",
+        "cassandra.credentials.password": "none",
+        "cassandra.native.port": "9042",
+        "cassandra.hosts": "localhost",
+        "cassandra.pooling.core.connection.per.host.local": "2",
+        "cassandra.retry.policy": "DEFAULT",
+        "cassandra.pooling.pool.timeout.millisecs": "5000",
+        "cassandra.protocol.version": "3",
+        "cassandra.pooling.new.connection.threshold.remote": "100",
+        "cassandra.pooling.core.connection.per.host.remote": "1",
+        "cassandra.pooling.max.request.per.connection.remote": "256",
+        "cassandra.cluster": "Test Cluster",
+        "cassandra.pooling.max.request.per.connection.local": "1024",
+        "cassandra.speculative.execution.policy": "DEFAULT",
+        "cassandra.compression.protocol": "NONE",
+        "cassandra.query.default.fetchSize": "5000",
+        "cassandra.keyspace": "system",
+        "cassandra.pooling.idle.timeout.seconds": "120",
+        "cassandra.credentials.username": "none",
+        "cassandra.socket.tcp.no_delay": "true",
+        "cassandra.max.schema.agreement.wait.second": "10",
+        "cassandra.query.default.serial.consistency": "SERIAL",
+        "cassandra.interpreter.parallelism": "10",
+        "cassandra.socket.connection.timeout.millisecs": "5000",
+        "cassandra.pooling.max.connection.per.host.remote": "2",
+        "cassandra.pooling.heartbeat.interval.seconds": "30",
+        "cassandra.reconnection.policy": "DEFAULT",
+        "cassandra.socket.read.timeout.millisecs": "12000"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.cassandra.CassandraInterpreter",
+          "name": "cassandra"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B828R9UC": {
+      "id": "2B828R9UC",
       "name": "sh",
       "group": "sh",
       "properties": {},
@@ -119,69 +252,353 @@
         "remote": true
       }
     },
-    "2AUC2ZEHS": {
-      "id": "2AUC2ZEHS",
-      "name": "hive",
-      "group": "hive",
-      "properties": {},
-      "interpreterGroup": [],
+    "2B8AA1XCM": {
+      "id": "2B8AA1XCM",
+      "name": "ignite",
+      "group": "ignite",
+      "properties": {
+        "ignite.peerClassLoadingEnabled": "true",
+        "ignite.config.url": "",
+        "ignite.jdbc.url": "jdbc:ignite:cfg://default-ignite-jdbc.xml",
+        "ignite.clientMode": "true",
+        "ignite.addresses": "127.0.0.1:47500..47509"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.ignite.IgniteInterpreter",
+          "name": "ignite"
+        },
+        {
+          "class": "org.apache.zeppelin.ignite.IgniteSqlInterpreter",
+          "name": "ignitesql"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B5YARKCA": {
+      "id": "2B5YARKCA",
+      "name": "phoenix",
+      "group": "phoenix",
+      "properties": {
+        "phoenix.jdbc.url": "jdbc:phoenix:localhost:2181:/hbase-unsecure",
+        "phoenix.user": "",
+        "phoenix.password": "",
+        "phoenix.max.result": "1000",
+        "phoenix.driver.name": "org.apache.phoenix.jdbc.PhoenixDriver"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.phoenix.PhoenixInterpreter",
+          "name": "sql"
+        }
+      ],
       "option": {
         "remote": true
       }
     }
   },
   "interpreterBindings": {
-    "2AU5TS2H2": [
-      "2ARAJA4SU",
-      "2ATRFHJDS",
-      "2AQTQW4X5",
-      "2AS95YRHK",
-      "2AUC2ZEHS",
-      "2ATRKM335",
-      "2AT3BADT8",
-      "2ASM6TCXA"
-    ],
     "2A94M5J1Z": [
-      "2ARAJA4SU",
-      "2ATRFHJDS",
-      "2AQTQW4X5",
-      "2AS95YRHK",
-      "2AUC2ZEHS",
-      "2ATRKM335",
-      "2AT3BADT8",
-      "2ASM6TCXA"
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
     ],
-    "2B2347ZN7": [
-      "2ARAJA4SU",
-      "2ATRFHJDS",
-      "2AQTQW4X5",
-      "2AS95YRHK",
-      "2AUC2ZEHS",
-      "2ATRKM335",
-      "2AT3BADT8",
-      "2ASM6TCXA"
+    "2B6U4YAZZ": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
     ],
-    "2B1W5UCM8": [
-      "2ARAJA4SU",
-      "2ATRFHJDS",
-      "2AQTQW4X5",
-      "2AS95YRHK",
-      "2AUC2ZEHS",
-      "2ATRKM335",
-      "2AT3BADT8",
-      "2ASM6TCXA"
+    "2B7TJP62C": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
     ],
-    "2AZF5G2JH": [
-      "2ARAJA4SU",
-      "2ATRFHJDS",
-      "2AS95YRHK",
-      "2AT3BADT8"
+    "2B545NST8": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
     ],
-    "2B1A92KJK": [
-      "2ARAJA4SU",
-      "2ATRFHJDS",
-      "2AS95YRHK",
-      "2AT3BADT8"
+    "2B7W58TNY": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B6A5ZJZF": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B7PSJ6BA": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B6VWVGNC": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B7K4F1MW": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B8XB39DD": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B6FXTPY4": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B8JSB6UW": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B7K3QYT3": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B7685T82": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B5ZG4PBJ": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B7XAANQX": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B7YCKJJN": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B6GN6KBY": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B87KJNN9": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
+    ],
+    "2B5GXJSYP": [
+      "2B6FV27N7",
+      "2B4PQAWZX",
+      "2B7PRXS56",
+      "2B828R9UC",
+      "2B5PXPWYC",
+      "2B4X62CQ2",
+      "2B889CRM2",
+      "2B6VSUZW2",
+      "2B8AA1XCM",
+      "2B77F5WPH",
+      "2B6C4NRWY",
+      "2B5YARKCA",
+      "2B5F6ZH3M"
     ]
   }
 }
