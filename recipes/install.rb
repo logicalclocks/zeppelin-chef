@@ -43,8 +43,8 @@ end
 
 
 my_ip = my_private_ip()
-spark_master_ip = private_recipe_ip("spark","master")
-flink_jobmgr_ip = private_recipe_ip("flink","jobmanager")
+#spark_master_ip = private_recipe_ip("spark","master")
+#flink_jobmgr_ip = private_recipe_ip("flink","jobmanager")
 
 file "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
  action :delete
@@ -57,7 +57,6 @@ template "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
   mode 0655
   variables({ 
         :private_ip => my_ip,
-        :spark_master => spark_master_ip,
         :hadoop_conf_dir => node[:hadoop][:dir] + "/hadoop/etc/hadoop"
            })
 end
@@ -72,18 +71,16 @@ template "#{node[:zeppelin][:home]}/conf/interpreter.json" do
   group node[:zeppelin][:group]
   mode 0655
   variables({ 
-        :spark_master_ip => "spark://#{spark_master_ip}:7077",
         :hadoop_home => node[:hadoop][:base_dir],
         :spark_home => node[:spark][:base_dir],
         :zeppelin_home => node[:zeppelin][:base_dir],
-        :version => node[:zeppelin][:version],
-        :flink_jobmgr_ip => flink_jobmgr_ip
+        :version => node[:zeppelin][:version]
            })
 end
 
 template "#{node[:zeppelin][:home]}/bin/alive.sh" do
   source "alive.sh.erb"
-  owner node[:zeppelin][:user]
+  owner node[:zeppelin][:user]  
   group node[:zeppelin][:group]
   mode 0655
   variables({ 
