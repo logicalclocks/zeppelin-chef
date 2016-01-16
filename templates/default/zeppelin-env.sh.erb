@@ -4,7 +4,7 @@ export ZEPPELIN_INTERPRETERS=spark:com.nflabs.zeppelin.spark.SparkInterpreter,sq
 export ZEPPELIN_INTERPRETER_DIR=interpreter
 export MASTER=yarn-client
 export ZEPPELIN_JAVA_OPTS=""
-export HADOOP_CONF_DIR=<%= @hadoop_conf_dir %>
+export HADOOP_CONF_DIR=<%= @hadoop_dir %>/etc/hadoop
 
 # export ZEPPELIN_JAVA_OPTS      		# Additional jvm options. for example, export ZEPPELIN_JAVA_OPTS="-Dspark.executor.memory=8g -Dspark.cores.max=16"
 # export ZEPPELIN_MEM            		# Zeppelin jvm mem options Default -Xmx1024m -XX:MaxPermSize=512m
@@ -26,8 +26,8 @@ export HADOOP_CONF_DIR=<%= @hadoop_conf_dir %>
 
 ## Use provided spark installation ##
 ## defining SPARK_HOME makes Zeppelin run spark interpreter process using spark-submit
-export SPARK_HOME=/srv/spark                   # (required) When it is defined, load it instead of Zeppelin embedded Spark libraries
-export HADOOP_HOME=/srv/hadoop
+export SPARK_HOME=<%= @spark_dir %>
+export HADOOP_HOME=<%= @hadoop_dir %>
 #export SPARK_SUBMIT_OPTIONS # (optional) extra options to pass to spark submit. eg) "--driver-memory 512M --executor-memory 1G".
 
 ## Use embedded spark binaries ##

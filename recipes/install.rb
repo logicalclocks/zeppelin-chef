@@ -57,7 +57,8 @@ template "#{node[:zeppelin][:home]}/conf/zeppelin-env.sh" do
   mode 0655
   variables({ 
         :private_ip => my_ip,
-        :hadoop_conf_dir => node[:hadoop][:dir] + "/hadoop/etc/hadoop"
+        :hadoop_dir => node[:hadoop][:base_dir],
+        :spark_dir => node[:spark][:base_dir]
            })
 end
 
