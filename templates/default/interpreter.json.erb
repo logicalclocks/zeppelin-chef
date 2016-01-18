@@ -1,5 +1,24 @@
 {
   "interpreterSettings": {
+    "2B5PXPWYC": {
+      "id": "2B5PXPWYC",
+      "name": "hive",
+      "group": "hive",
+      "properties": {
+        "hive.hiveserver2.url": "jdbc:hive2://localhost:10000",
+        "hive.hiveserver2.password": "",
+        "hive.hiveserver2.user": "hive"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.hive.HiveInterpreter",
+          "name": "hql"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
     "2B7PRXS56": {
       "id": "2B7PRXS56",
       "name": "angular",
@@ -9,6 +28,73 @@
         {
           "class": "org.apache.zeppelin.angular.AngularInterpreter",
           "name": "angular"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B6C4NRWY": {
+      "id": "2B6C4NRWY",
+      "name": "psql",
+      "group": "psql",
+      "properties": {
+        "postgresql.driver.name": "org.postgresql.Driver",
+        "postgresql.password": "",
+        "postgresql.url": "jdbc:postgresql://localhost:5432/",
+        "postgresql.max.result": "1000",
+        "postgresql.user": "gpadmin"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.postgresql.PostgreSqlInterpreter",
+          "name": "sql"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B5F6ZH3M": {
+      "id": "2B5F6ZH3M",
+      "name": "kylin",
+      "group": "kylin",
+      "properties": {
+        "kylin.api.user": "ADMIN",
+        "kylin.query.limit": "5000",
+        "kylin.api.password": "KYLIN",
+        "kylin.query.offset": "0",
+        "kylin.query.project": "default",
+        "kylin.api.url": "http://\u003chost\u003e:\u003cport\u003e/kylin/api/query",
+        "kylin.query.ispartial": "true"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.kylin.KylinInterpreter",
+          "name": "kylin"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B6VSUZW2": {
+      "id": "2B6VSUZW2",
+      "name": "lens",
+      "group": "lens",
+      "properties": {
+        "lens.session.cluster.user": "default",
+        "zeppelin.lens.maxResults": "1000",
+        "lens.query.enable.persistent.resultset": "false",
+        "lens.client.dbname": "default",
+        "zeppelin.lens.maxThreads": "10",
+        "lens.server.base.url": "http://\u003chostname\u003e:\u003cport\u003e/lensapi",
+        "zeppelin.lens.run.concurrent": "true"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.lens.LensInterpreter",
+          "name": "lens"
         }
       ],
       "option": {
@@ -63,6 +149,23 @@
         {
           "class": "org.apache.zeppelin.markdown.Markdown",
           "name": "md"
+        }
+      ],
+      "option": {
+        "remote": true
+      }
+    },
+    "2B4X62CQ2": {
+      "id": "2B4X62CQ2",
+      "name": "tajo",
+      "group": "tajo",
+      "properties": {
+        "tajo.jdbc.uri": "jdbc:tajo://localhost:26002/default"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.tajo.TajoInterpreter",
+          "name": "tql"
         }
       ],
       "option": {

@@ -28,6 +28,9 @@ bash 'extract-zeppelin' do
 #                mv #{Chef::Config[:file_cache_path]}/zeppelin-#{node[:zeppelin][:version]}/* #{node[:zeppelin][:dir]}/
                 mv #{Chef::Config[:file_cache_path]}/zeppelin-#{node[:zeppelin][:version]} #{node[:zeppelin][:dir]}
                 mkdir -p #{node[:zeppelin][:home]}/run
+                wget http://snurran.sics.se/hops/zeppelin-interpreter.tgz
+                tar -xf zeppelin-interpreter.tgz
+                mv zeppelin-interpreter #{node[:zeppelin][:home]}
                 chown -R #{node[:zeppelin][:user]}:#{node[:zeppelin][:group]} #{node[:zeppelin][:home]}
                 touch #{node[:zeppelin][:home]}/.zeppelin_extracted_#{node[:zeppelin][:version]}
         EOH
