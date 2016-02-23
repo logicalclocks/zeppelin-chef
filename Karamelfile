@@ -6,6 +6,4 @@ dependencies:
       - spark::install
   - recipe: zeppelin::default
     global:  
-      - spark::master
-      - spark::slave
       - hopsworks::default
