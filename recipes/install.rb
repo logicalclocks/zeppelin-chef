@@ -7,6 +7,8 @@
 # All rights reserved
 #
 
+include_recipe "hops::wrap"
+
 package_url = "#{node[:zeppelin][:url]}"
 base_package_filename = File.basename(package_url)
 cached_package_filename = "#{Chef::Config[:file_cache_path]}/#{base_package_filename}"
