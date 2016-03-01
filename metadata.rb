@@ -8,7 +8,7 @@ version          "0.1.1"
 
 
 depends          "flink"
-depends          "spark"
+depends          "apache_spark"
 depends          "hops"
 depends          "hadoop"
 depends          "kagent"
