@@ -81,7 +81,7 @@ suites:
             use_hopsworks: "true"
          hdfs:
             user: glassfish
-         hadoop:
+         apache_hadoop:
             yarn: 
                user: glassfish
             mr: 

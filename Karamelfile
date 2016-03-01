@@ -3,7 +3,7 @@ dependencies:
     local:
       - hops::install
       - hopsworks::install
-      - spark::install
+      - hadoop_spark::install
   - recipe: zeppelin::default
     global:  
       - hopsworks::default
