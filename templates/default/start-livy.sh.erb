@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export SPARK_HOME=<%= node.hadoop_spark.home %>
+export HADOOP_CONF_DIR=<%= node.apache_hadoop.home %>/etc/hadoop/conf
+
+cd <%= node.livy.home %>
+
+nohup env \
+  LIVY_SERVER_JAVA_OPTS="-Dlivy.server.session.factory=yarn" \
+  CLASSPATH=$(<%= node.apache_hadoop.home %>/bin/hadoop classpath %>) \
+  $LIVY_HOME/bin/livy-server  2>&1 > <%= node.livy.home %>/livy.log &
+
+#nohup ./bin/livy-server 2>&1 > <%= node.livy.home %>/livy.log &
+
+echo $! > <%= node.livy.home %>/livy.pid

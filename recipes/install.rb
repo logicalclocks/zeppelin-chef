@@ -106,3 +106,38 @@ directory "#{node.zeppelin.home}/logs" do
   mode "755"
   action :create
 end
+
+
+
+##### Livy Installation
+
+
+package_url = "#{node.livy.url}"
+base_package_filename = File.basename(package_url)
+cached_package_filename = "#{Chef::Config.file_cache_path}/#{base_package_filename}"
+
+remote_file cached_package_filename do
+  source package_url
+  owner "#{node.hadoop_spark.user}"
+  mode "0644"
+  action :create_if_missing
+end
+
+# Extract Livy
+bash 'extract-livy' do
+        user "root"
+        group node.hadoop_spark.group
+        code <<-EOH
+                set -e
+                tar -xf #{cached_package_filename} -C #{Chef::Config.file_cache_path}
+                mv #{Chef::Config.file_cache_path}/livy-#{node.livy.version} #{node.livy.dir}
+                rm -f #{node.livy.dir}/livy
+                ln -s #{node.livy.home} #{node.livy.dir}/livy
+                chown -R #{node.hadoop_spark.user}:#{node.hadoop_spark.group} #{node.livy.home}
+                touch #{node.livy.home}/.livy_extracted_#{node.livy.version}
+        EOH
+     not_if { ::File.exists?( "#{node.livy.home}/.livy_extracted_#{node.livy.version}" ) }
+end
+
+
+
