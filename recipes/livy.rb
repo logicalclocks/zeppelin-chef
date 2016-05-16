@@ -1,5 +1,6 @@
 my_ip = my_private_ip()
 nn_endpoint = private_recipe_ip("apache_hadoop", "nn") + ":#{node.apache_hadoop.nn.port}"
+home = node.apache_hadoop.hdfs.user_home
 
   
 apache_hadoop_hdfs_directory "#{node.livy.home}/livy-assembly/target/scala-2.10/livy-assembly-#{node.livy.version}-SNAPSHOT.jar" do
@@ -76,7 +77,7 @@ else #sysv
 
   template "/etc/init.d/#{service_name}" do
     source "#{service_name}.erb"
-    owner node.hadoop_spark.yarn.user
+    owner node.hadoop_spark.user
     group node.hadoop_spark.group
     mode 0754
     notifies :enable, resources(:service => service_name)

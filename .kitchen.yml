@@ -33,6 +33,7 @@ suites:
       - recipe[hops::install]
       - recipe[hadoop_spark::install]
       - recipe[zeppelin::install]
+      - recipe[zeppelin::livy]
       - recipe[ndb::mgmd]
       - recipe[ndb::ndbd]
       - recipe[ndb::mysqld]

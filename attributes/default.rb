@@ -15,16 +15,16 @@ default.zeppelin.dir                 = "/srv"
 default.zeppelin.base_dir            = node.zeppelin.dir + "/zeppelin" 
 default.zeppelin.home                = node.zeppelin.dir + "/zeppelin-" + node.zeppelin.version
 
-default.zeppelin.url                 = "#{node.downlaoad_url}/#{node.zeppelin.name}.tar.gz"
+default.zeppelin.url                 = "#{node.download_url}/#{node.zeppelin.name}.tar.gz"
 
 default.zeppelin.executor_memory     = "512m"
 default.zeppelin.driver_memory       = "1g"
 default.zeppelin.eventlog_enabled    = "true"
 
 default.livy.version                 = "0.2.0"
-default.livy.url                     = "#{node.downlaoad_url}/livy-#{node.livy.version}.tgz"
+default.livy.url                     = "#{node.download_url}/livy-#{node.livy.version}.tgz"
 default.livy.port                    = "8998"
 default.livy.dir                     = "/srv"
 default.livy.home                    =  node.livy.dir + "/livy" 
-default.ivy.keystore                 = "#{node.kagent.home}/keystore.jks"
-default.ivy.keystore.password        = ""
+default.ivy.keystore                 = "#{node.kagent.base_dir}/keystore.jks"
+default.ivy.keystore_password        = ""
