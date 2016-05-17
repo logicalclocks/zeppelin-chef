@@ -124,6 +124,8 @@ remote_file cached_package_filename do
 end
 
 # Extract Livy
+livy_downloaded = "#{node.livy.dir}/.livy_extracted_#{node.livy.version}"
+
 bash 'extract-livy' do
         user "root"
         group node.hadoop_spark.group
@@ -135,10 +137,10 @@ bash 'extract-livy' do
                 rm -f #{node.livy.home}
                 ln -s #{node.livy.base_dir} #{node.livy.home}
                 chown -R #{node.hadoop_spark.user}:#{node.hadoop_spark.group} #{node.livy.base_dir}
-                touch #{node.livy.dir}/.livy_extracted_#{node.livy.version}
-                chown -R #{node.hadoop_spark.user}:#{node.hadoop_spark.group} #{node.livy.dir}/.livy_extracted_#{node.livy.version}
+                touch #{livy_downloaded}
+                chown -R #{node.hadoop_spark.user}:#{node.hadoop_spark.group} #{livy_downloaded}
         EOH
-     not_if { ::File.exists?( "#{node.livy.dir}/.livy_extracted_#{node.livy.version}" ) }
+     not_if { ::File.exists?( "#{livy_downloaded}" ) }
 end
 
 
