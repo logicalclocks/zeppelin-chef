@@ -2,13 +2,14 @@ my_ip = my_private_ip()
 nn_endpoint = private_recipe_ip("apache_hadoop", "nn") + ":#{node.apache_hadoop.nn.port}"
 home = node.apache_hadoop.hdfs.user_home
 
-  
-apache_hadoop_hdfs_directory "#{home}/#{node.hadoop_spark.user}/livy" do
+
+livy_dir="#{home}/#{node.hadoop_spark.user}/livy"
+apache_hadoop_hdfs_directory "#{livy_dir}" do
   action :create_as_superuser
   owner node.hadoop_spark.user
   group node.apache_hadoop.group
   mode "1770"
-  not_if ". #{node.apache_hadoop.home}/sbin/set-env.sh && #{node.apache_hadoop.home}/bin/hdfs dfs -test -d #{d}"
+  not_if ". #{node.apache_hadoop.home}/sbin/set-env.sh && #{node.apache_hadoop.home}/bin/hdfs dfs -test -d #{livy_dir}"
 end
 
 apache_hadoop_hdfs_directory "#{node.livy.home}/livy-assembly/target/scala-2.10/livy-assembly-#{node.livy.version}-SNAPSHOT.jar" do
