@@ -44,10 +44,10 @@ attribute "livy.home",
           :dscription => "livy.home",
           :type => "string"
 
-attribute "ivy.keystore",
+attribute "livy.keystore",
           :dscription => "ivy.keystore",
           :type => "string"
 
-attribute "ivy.keystore.password",
-          :dscription => "ivy.keystore.password",
+attribute "livy.keystore_password",
+          :dscription => "ivy.keystore_password",
           :type => "string"
