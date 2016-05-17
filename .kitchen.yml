@@ -32,8 +32,6 @@ suites:
       - recipe[ndb::install]
       - recipe[hops::install]
       - recipe[hadoop_spark::install]
-      - recipe[zeppelin::install]
-      - recipe[zeppelin::livy]
       - recipe[ndb::mgmd]
       - recipe[ndb::ndbd]
       - recipe[ndb::mysqld]
@@ -44,9 +42,9 @@ suites:
       - recipe[hops::nm]
       - recipe[hops::jhs]
       #- recipe[hopsworks]
-      - recipe[hadoop_spark::master]
-      - recipe[hadoop_spark::worker]
-      - recipe[zeppelin::default]
+      - recipe[zeppelin::install]
+      - recipe[zeppelin::livy]
+      #- recipe[zeppelin::default]
     attributes:
          vagrant: "true"
          hopsworks:
@@ -80,9 +78,9 @@ suites:
             jhs:
                private_ips: ["10.0.2.15"]
             use_hopsworks: "true"
-         hdfs:
-            user: glassfish
          apache_hadoop:
+            hdfs: 
+               user: glassfish
             yarn: 
                user: glassfish
             mr: 

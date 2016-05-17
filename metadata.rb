@@ -11,6 +11,7 @@ source_url       "https://github.com/hopshadoop/zeppelin-chef"
 
 depends          "flink"
 depends          "hadoop_spark"
+depends          "ndb"
 depends          "hops"
 depends          "apache_hadoop"
 depends          "kagent"
