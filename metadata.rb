@@ -10,9 +10,9 @@ source_url       "https://github.com/hopshadoop/zeppelin-chef"
 
 
 depends          "flink"
-depends          "apache_spark"
+depends          "hadoop_spark"
 depends          "hops"
-depends          "hadoop"
+depends          "apache_hadoop"
 depends          "kagent"
 
 recipe           "install", "Installs Zeppelin binaries"
