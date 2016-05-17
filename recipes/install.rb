@@ -131,12 +131,14 @@ bash 'extract-livy' do
                 set -e
                 tar -xf #{cached_package_filename} -C #{Chef::Config.file_cache_path}
                 mv #{Chef::Config.file_cache_path}/livy-#{node.livy.version} #{node.livy.dir}
-                rm -f #{node.livy.dir}/livy
-                ln -s #{node.livy.home} #{node.livy.dir}/livy
-                chown -R #{node.hadoop_spark.user}:#{node.hadoop_spark.group} #{node.livy.home}
-                touch #{node.livy.home}/.livy_extracted_#{node.livy.version}
+                # remove old symbolic link, if any
+                rm -f #{node.livy.home}
+                ln -s #{node.livy.base_dir} #{node.livy.home}
+                chown -R #{node.hadoop_spark.user}:#{node.hadoop_spark.group} #{node.livy.base_dir}
+                touch #{node.livy.dir}/.livy_extracted_#{node.livy.version}
+                chown -R #{node.hadoop_spark.user}:#{node.hadoop_spark.group} #{node.livy.dir}/.livy_extracted_#{node.livy.version}
         EOH
-     not_if { ::File.exists?( "#{node.livy.home}/.livy_extracted_#{node.livy.version}" ) }
+     not_if { ::File.exists?( "#{node.livy.dir}/.livy_extracted_#{node.livy.version}" ) }
 end
 
 
