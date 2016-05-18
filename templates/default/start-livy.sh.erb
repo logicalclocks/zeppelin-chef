@@ -3,7 +3,7 @@
 export SPARK_HOME=<%= node.hadoop_spark.home %>
 export HADOOP_CONF_DIR=<%= node.apache_hadoop.home %>/etc/hadoop/conf
 
-cd <%= node.livy.home %>
+export LIVY_HOME=<%= node.livy.home %>
 
 nohup env \
   LIVY_SERVER_JAVA_OPTS="-Dlivy.server.session.factory=yarn" \
