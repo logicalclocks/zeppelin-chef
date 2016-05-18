@@ -11,6 +11,7 @@ source_url       "https://github.com/hopshadoop/zeppelin-chef"
 
 depends          "flink"
 depends          "hadoop_spark"
+depends          "ndb"
 depends          "hops"
 depends          "apache_hadoop"
 depends          "kagent"
@@ -43,10 +44,10 @@ attribute "livy.home",
           :dscription => "livy.home",
           :type => "string"
 
-attribute "ivy.keystore",
+attribute "livy.keystore",
           :dscription => "ivy.keystore",
           :type => "string"
 
-attribute "ivy.keystore.password",
-          :dscription => "ivy.keystore.password",
+attribute "livy.keystore_password",
+          :dscription => "ivy.keystore_password",
           :type => "string"
