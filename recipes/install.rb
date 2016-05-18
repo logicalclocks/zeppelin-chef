@@ -27,7 +27,6 @@ bash 'extract-zeppelin' do
         code <<-EOH
                 set -e
                 tar -xf #{cached_package_filename} -C #{Chef::Config.file_cache_path}
-#                mv #{Chef::Config.file_cache_path}/zeppelin-#{node.zeppelin.version}/* #{node.zeppelin.dir}/
                 mv #{Chef::Config.file_cache_path}/zeppelin-#{node.zeppelin.version} #{node.zeppelin.dir}
                 mkdir -p #{node.zeppelin.home}/run
                 wget http://snurran.sics.se/hops/zeppelin-interpreter.tgz

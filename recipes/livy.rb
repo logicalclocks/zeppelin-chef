@@ -21,12 +21,12 @@ apache_hadoop_hdfs_directory "#{node.livy.home}/livy-assembly/target/scala-2.10/
 end
 
 
-file "#{node.livy.home}/conf/livy-defaults.conf" do
+file "#{node.livy.home}/conf/livy.conf" do
  action :delete
 end
 
-template "#{node.livy.home}/conf/livy-defaults.conf" do
-  source "livy-defaults.conf.erb"
+template "#{node.livy.home}/conf/livy.conf" do
+  source "livy.conf.erb"
   owner node.hadoop_spark.user
   group node.hadoop_spark.group
   mode 0655
@@ -36,6 +36,28 @@ template "#{node.livy.home}/conf/livy-defaults.conf" do
            })
 end
 
+
+file "#{node.livy.home}/conf/spark-blacklist.conf" do
+ action :delete
+end
+
+template "#{node.livy.home}/conf/spark-blacklist.conf" do
+  source "spark-blacklist.conf.erb"
+  owner node.hadoop_spark.user
+  group node.hadoop_spark.group
+  mode 0655
+end
+
+file "#{node.livy.home}/conf/livy-env.sh.erb" do
+ action :delete
+end
+
+template "#{node.livy.home}/conf/livy-env.sh" do
+  source "livy-env.sh.erb"
+  owner node.hadoop_spark.user
+  group node.hadoop_spark.group
+  mode 0655
+end
 
 case node.platform
 when "ubuntu"
