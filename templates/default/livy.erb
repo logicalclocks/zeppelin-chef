@@ -22,7 +22,7 @@ RETVAL=0
 
 ulimit -n 65000
 
-EXEC_WITH_USER="su -c <%= node.hadoop_spark.user %>"
+EXEC_WITH_USER="su <%= node.hadoop_spark.user %> -c"
 
 start() {
   $EXEC_WITH_USER "$START_PROG"
