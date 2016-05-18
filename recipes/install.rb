@@ -123,6 +123,10 @@ remote_file cached_package_filename do
   action :create_if_missing
 end
 
+
+package "unzip" do
+end
+
 # Extract Livy
 livy_downloaded = "#{node.livy.dir}/.livy_extracted_#{node.livy.version}"
 
@@ -131,8 +135,8 @@ bash 'extract-livy' do
         group node.hadoop_spark.group
         code <<-EOH
                 set -e
-                tar -xf #{cached_package_filename} -C #{Chef::Config.file_cache_path}
-                mv #{Chef::Config.file_cache_path}/livy-#{node.livy.version} #{node.livy.dir}
+                unzip #{cached_package_filename} -d #{Chef::Config.file_cache_path}
+                mv #{Chef::Config.file_cache_path}/livy-server-#{node.livy.version} #{node.livy.dir}
                 # remove old symbolic link, if any
                 rm -f #{node.livy.home}
                 ln -s #{node.livy.base_dir} #{node.livy.home}

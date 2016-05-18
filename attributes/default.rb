@@ -22,7 +22,7 @@ default.zeppelin.driver_memory       = "1g"
 default.zeppelin.eventlog_enabled    = "true"
 
 default.livy.version                 = "0.2.0"
-default.livy.url                     = "#{node.download_url}/livy-#{node.livy.version}.tgz"
+default.livy.url                     = "#{node.download_url}/livy-server-#{node.livy.version}.zip"
 default.livy.port                    = "8998"
 default.livy.dir                     = "/srv"
 default.livy.base_dir                =  node.livy.dir + "/livy-" + node.livy.version
