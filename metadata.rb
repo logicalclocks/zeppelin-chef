@@ -18,7 +18,6 @@ depends          "kagent"
 
 recipe           "install", "Installs Zeppelin binaries"
 recipe           "default", "Starts a Zeppelin master"
-recipe           "livy",    "Installs a Livy Spark REST Server"
 
 attribute "zeppelin/user",
           :description => "User to install/run zeppelin as",
@@ -28,26 +27,3 @@ attribute "zeppelin/dir",
           :description => "zeppelin base dir",
           :type => 'string'
 
-attribute "livy.version",
-          :dscription => "livy.version",
-          :type => "string"
-
-attribute "livy.url",
-          :dscription => "livy.url",
-          :type => "string"
-
-attribute "livy.port",
-          :dscription => "livy.port",
-          :type => "string"
-
-attribute "livy.home",
-          :dscription => "livy.home",
-          :type => "string"
-
-attribute "livy.keystore",
-          :dscription => "ivy.keystore",
-          :type => "string"
-
-attribute "livy.keystore_password",
-          :dscription => "ivy.keystore_password",
-          :type => "string"

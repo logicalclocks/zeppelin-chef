@@ -43,7 +43,6 @@ suites:
       - recipe[hops::jhs]
       #- recipe[hopsworks]
       - recipe[zeppelin::install]
-      - recipe[zeppelin::livy]
       #- recipe[zeppelin::default]
     attributes:
          vagrant: "true"
