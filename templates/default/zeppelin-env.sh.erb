@@ -47,3 +47,12 @@ export HADOOP_HOME=<%= @hadoop_dir %>
 # export ZEPPELIN_SPARK_CONCURRENTSQL   # Execute multiple SQL concurrently if set true. false by default.
 # export ZEPPELIN_SPARK_MAXRESULT       # Max number of SparkSQL result to display. 1000 by default.
 
+## Zeppelin SSL Config
+export ZEPPELIN_SSL=<%= @sslenabled %>
+export ZEPPELIN_SSL_CLIENT_AUTH=<%= @sslclientauth %>
+export ZEPPELIN_SSL_KEYSTORE_PATH=<%= @sslkeystorepath %>
+export ZEPPELIN_SSL_KEYSTORE_TYPE=<%= @sslkeystoretype %>
+export ZEPPELIN_SSL_KEYSTORE_PASSWORD=<%= @sslkeystorepassword %>
+export ZEPPELIN_SSL_TRUSTSTORE_PATH=<%= @ssltruststorepath %>
+export ZEPPELIN_SSL_TRUSTSTORE_TYPE=<% @ssltruststoretype %>
+export ZEPPELIN_SSL_TRUSTSTORE_PASSWORD=<%= @ssltruststorepassword %>	

@@ -77,7 +77,15 @@ template "#{node.zeppelin.home}/conf/interpreter.json" do
         :hadoop_home => node.apache_hadoop.base_dir,
         :spark_home => node.hadoop_spark.base_dir,
         :zeppelin_home => node.zeppelin.base_dir,
-        :version => node.zeppelin.version
+        :version => node.zeppelin.version,
+        :sslenabled => node.zeppelin.ssl.enabled,
+        :sslclientauth => node.zeppelin.ssl.client.auth.enabled,
+        :sslkeystorepath => node.zeppelin.ssl.keystore.path,
+        :sslkeystoretype => node.zeppelin.ssl.keystore.type,
+        :sslkeystorepassword => node.zeppelin.ssl.keystore.password,
+        :ssltruststorepath => node.zeppelin.ssl.truststore.path,
+        :ssltruststoretype => node.zeppelin.ssl.truststore.type,
+        :ssltruststorepassword => node.zeppelin.ssl.truststore.password
            })
 end
 
