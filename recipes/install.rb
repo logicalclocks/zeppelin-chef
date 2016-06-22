@@ -9,6 +9,24 @@
 
 include_recipe "hops::wrap"
 
+
+user node.zeppelin.user do
+  supports :manage_home => true
+  home "/home/#{node.zeppelin.user}"
+  action :create
+  system true
+  shell "/bin/bash"
+  not_if "getent passwd #{node.zeppelin.user}"
+end
+
+group node.zeppelin.group do
+  action :modify
+   members ["#{node.zeppelin.user}"]
+  append true
+end
+
+
+
 package_url = "#{node.zeppelin.url}"
 base_package_filename = File.basename(package_url)
 cached_package_filename = "/tmp/#{base_package_filename}"
