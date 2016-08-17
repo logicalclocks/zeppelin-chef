@@ -18,6 +18,7 @@ depends          "kagent"
 
 recipe           "install", "Installs Zeppelin binaries"
 recipe           "default", "Starts a Zeppelin master"
+recipe           "purge", "Removes and deletes Zeppelin"
 
 attribute "zeppelin/user",
           :description => "User to install/run zeppelin as",
