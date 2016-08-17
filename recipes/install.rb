@@ -38,6 +38,7 @@ remote_file cached_package_filename do
   action :create_if_missing
 end
 
+zeppelin_down="#{node.zeppelin.home}/.zeppelin_extracted_#{node.zeppelin.version}"
 # Extract Zeppelin
 bash 'extract-zeppelin' do
         user "root"
@@ -51,9 +52,9 @@ bash 'extract-zeppelin' do
                 tar -xf zeppelin-interpreter.tgz
                 mv zeppelin-interpreter #{node.zeppelin.home}
                 chown -R #{node.zeppelin.user}:#{node.zeppelin.group} #{node.zeppelin.home}
-                touch #{node.zeppelin.home}/.zeppelin_extracted_#{node.zeppelin.version}
+                touch #{zeppelin_down}
         EOH
-     not_if { ::File.exists?( "#{node.zeppelin.home}/.zeppelin_extracted_#{node.zeppelin.version}" ) }
+     not_if { ::File.exists?( "#{zeppelin_down}" ) }
 end
 
 
