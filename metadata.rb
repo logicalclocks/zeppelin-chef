@@ -15,10 +15,20 @@ depends          "ndb"
 depends          "hops"
 depends          "apache_hadoop"
 depends          "kagent"
+depends          "java"
 
 recipe           "install", "Installs Zeppelin binaries"
 recipe           "default", "Starts a Zeppelin master"
 recipe           "purge", "Removes and deletes Zeppelin"
+
+
+attribute "java/jdk_version",
+          :description =>  "Jdk version",
+          :type => 'string'
+
+attribute "java/install_flavor",
+          :description =>  "Oracle (default) or openjdk",
+          :type => 'string'
 
 attribute "zeppelin/user",
           :description => "User to install/run zeppelin as",

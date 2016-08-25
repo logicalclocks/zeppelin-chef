@@ -7,6 +7,8 @@
 # All rights reserved
 #
 
+include_recipe "java"
+
 include_recipe "hops::wrap"
 
 
