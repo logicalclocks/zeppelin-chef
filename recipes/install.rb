@@ -7,15 +7,17 @@
 # All rights reserved
 #
 
+include_recipe "java"
+
 include_recipe "hops::wrap"
 
 
 user node.zeppelin.user do
-  supports :manage_home => true
   home "/home/#{node.zeppelin.user}"
   action :create
   system true
   shell "/bin/bash"
+  manage_home true
   not_if "getent passwd #{node.zeppelin.user}"
 end
 
@@ -38,6 +40,7 @@ remote_file cached_package_filename do
   action :create_if_missing
 end
 
+zeppelin_down="#{node.zeppelin.home}/.zeppelin_extracted_#{node.zeppelin.version}"
 # Extract Zeppelin
 bash 'extract-zeppelin' do
         user "root"
@@ -51,9 +54,9 @@ bash 'extract-zeppelin' do
                 tar -xf zeppelin-interpreter.tgz
                 mv zeppelin-interpreter #{node.zeppelin.home}
                 chown -R #{node.zeppelin.user}:#{node.zeppelin.group} #{node.zeppelin.home}
-                touch #{node.zeppelin.home}/.zeppelin_extracted_#{node.zeppelin.version}
+                touch #{zeppelin_down}
         EOH
-     not_if { ::File.exists?( "#{node.zeppelin.home}/.zeppelin_extracted_#{node.zeppelin.version}" ) }
+     not_if { ::File.exists?( "#{zeppelin_down}" ) }
 end
 
 
