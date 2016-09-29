@@ -132,7 +132,7 @@ end
 # Support for 'R' in apache zeppelin
 case node.platform_family
 when "debian"
- package "r-base" eo
+ package "r-base" do
   action :install
  end
 
