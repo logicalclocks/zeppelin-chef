@@ -129,4 +129,24 @@ end
 
 
 
+# Support for 'R' in apache zeppelin
+case node.platform_family
+when "debian"
+ package "r-base" eo
+  action :install
+ end
 
+when "rhel"
+  package "R" do
+    action :install
+  end
+  package "R-devel" do
+    action :install
+  end
+  package "libcurl-devel" do
+    action :install
+  end
+  package "openssl-devel" do
+    action :install
+  end
+end
