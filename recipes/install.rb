@@ -48,7 +48,7 @@ bash 'extract-zeppelin' do
         code <<-EOH
                 set -e
                 cd /tmp
-                tar -xf #{node.zeppelin.name}.tar.gz -C /tmp
+                tar -xf #{cached_package_filename} -C /tmp
                 mv /tmp/zeppelin-#{node.zeppelin.version} #{node.zeppelin.dir}
                 mkdir -p #{node.zeppelin.home}/run
                 wget http://snurran.sics.se/hops/zeppelin-interpreter.tgz
