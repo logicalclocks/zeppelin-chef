@@ -47,6 +47,7 @@ bash 'extract-zeppelin' do
         group node.zeppelin.group
         code <<-EOH
                 set -e
+                cd /tmp
                 tar -xf #{cached_package_filename} -C /tmp
                 mv /tmp/zeppelin-#{node.zeppelin.version} #{node.zeppelin.dir}
                 mkdir -p #{node.zeppelin.home}/run
