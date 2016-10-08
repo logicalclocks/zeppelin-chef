@@ -43,7 +43,7 @@ suites:
       - recipe[hops::jhs]
       #- recipe[hopsworks]
       - recipe[zeppelin::install]
-      #- recipe[zeppelin::default]
+      - recipe[zeppelin::default]
     attributes:
          vagrant: "true"
          hopsworks:
@@ -108,7 +108,6 @@ suites:
                private_ips: ["10.0.2.15"]
             private_ips: ["10.0.2.15"]
             public_ips: ["10.0.2.15"]
-            dir: "/tmp"
             user: "glassfish"
          elastic:
             default:
