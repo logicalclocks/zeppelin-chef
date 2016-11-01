@@ -6,7 +6,7 @@ include_attribute "flink"
 
 default.zeppelin.version             = "0.6.3-SNAPSHOT"
 default.zeppelin.spark_version       = node.hadoop_spark.version
-default.zeppelin.hadoop_version      = "2.4"
+default.zeppelin.hadoop_version      = "2.6"
 default.zeppelin.name                = "zeppelin-#{node.zeppelin.version}-bin-spark-#{node.zeppelin.spark_version}_hadoop-#{node.zeppelin.hadoop_version}"
 default.zeppelin.user                = node.apache_hadoop.yarn.user
 default.zeppelin.group               = node.apache_hadoop.group
