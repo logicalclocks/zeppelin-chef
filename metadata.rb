@@ -38,3 +38,6 @@ attribute "zeppelin/dir",
           :description => "zeppelin base dir",
           :type => 'string'
 
+attribute "zeppelin/default/private_ips",
+          :description => "Set ip addresses",
+          :type => "array"
