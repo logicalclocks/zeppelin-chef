@@ -11,7 +11,7 @@ default.zeppelin.user                = node.hops.yarn.user
 default.zeppelin.group               = node.hops.group
 default.zeppelin.port                = 58206
 
-default.zeppelin.dir                 = node.install.dir.empty? ? node.install.dir : "/srv"
+default.zeppelin.dir                 = node.install.dir.empty? ? "/srv" : node.install.dir
 default.zeppelin.base_dir            = node.zeppelin.dir + "/zeppelin" 
 default.zeppelin.home                = node.zeppelin.dir + "/zeppelin-" + node.zeppelin.version
 
