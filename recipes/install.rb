@@ -9,11 +9,16 @@
 
 include_recipe "java"
 
+group node.zeppelin.group do
+  action :create
+  not_if "getent group #{node.zeppelin.group}"
+end
 
 user node.zeppelin.user do
-  home "/home/#{node.zeppelin.user}"
   action :create
+  gid node.zeppelin.group
   system true
+  home "/home/#{node.zeppelin.user}"  
   shell "/bin/bash"
   manage_home true
   not_if "getent passwd #{node.zeppelin.user}"
