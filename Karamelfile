@@ -1,6 +1,6 @@
 dependencies: 
   - recipe: zeppelin::install
-    local:
+    global:
       - hops::install
       - hopsworks::install
       - hadoop_spark::install
