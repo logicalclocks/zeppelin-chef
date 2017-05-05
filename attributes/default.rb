@@ -3,7 +3,7 @@ include_attribute "hops"
 include_attribute "hadoop_spark"
 include_attribute "flink"
 
-default.zeppelin.version             = "0.7.1-SNAPSHOT"
+default.zeppelin.version             = "0.8.0-SNAPSHOT"
 default.zeppelin.spark_version       = node.hadoop_spark.version
 default.zeppelin.hadoop_version      = "2.7"
 default.zeppelin.name                = "zeppelin-#{node.zeppelin.version}-bin-spark-#{node.zeppelin.spark_version}_hadoop-#{node.zeppelin.hadoop_version}"
