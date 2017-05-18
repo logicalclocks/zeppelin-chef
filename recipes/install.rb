@@ -30,6 +30,15 @@ group node.zeppelin.group do
   append true
 end
 
+directory node.zeppelin.dir do
+  owner node.zeppelin.user
+  group node.hops.group
+  mode "0775"
+  action :create
+  not_if { File.directory?("#{node.zeppelin.dir}") }
+end
+
+
 package_url = "#{node.zeppelin.url}"
 base_package_filename = File.basename(package_url)
 cached_package_filename = "/tmp/#{base_package_filename}"
