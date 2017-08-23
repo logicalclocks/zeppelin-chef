@@ -32,7 +32,7 @@ end
 
 package_url = "#{node.zeppelin.url}"
 base_package_filename = File.basename(package_url)
-cached_package_filename = "/tmp/#{base_package_filename}"
+cached_package_filename = "#{Chef::Config[:file_cache_path]}/#{base_package_filename}"
 
 remote_file cached_package_filename do
   source package_url
@@ -48,9 +48,9 @@ bash 'extract-zeppelin' do
         group node.zeppelin.group
         code <<-EOH
                 set -e
-                cd /tmp
-                tar -xf #{cached_package_filename} -C /tmp
-                mv /tmp/zeppelin-#{node.zeppelin.version} #{node.zeppelin.dir}
+                cd #{Chef::Config[:file_cache_path]}
+                tar -xf #{cached_package_filename} -C #{Chef::Config[:file_cache_path]}
+                mv #{Chef::Config[:file_cache_path]}/zeppelin-#{node.zeppelin.version} #{node.zeppelin.dir}
                 mkdir -p #{node.zeppelin.home}/run
                 wget http://snurran.sics.se/hops/zeppelin-interpreter.tgz
                 tar -xf zeppelin-interpreter.tgz
