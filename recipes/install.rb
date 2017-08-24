@@ -65,6 +65,7 @@ bash 'extract-zeppelin' do
                 tar -xf zeppelin-interpreter.tgz
                 mv zeppelin-interpreter #{node.zeppelin.home}
                 chown -R #{node.zeppelin.user}:#{node.zeppelin.group} #{node.zeppelin.home}
+                chmod 750 #{node.zeppelin.home}
                 touch #{zeppelin_down}
         EOH
      not_if { ::File.exists?( "#{zeppelin_down}" ) }
