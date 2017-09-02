@@ -1,6 +1,5 @@
 
-hopsworks_user="glassfish"
-
+hopsworks_user= node['install']['user'].empty? ? "glassfish" : node['install']['user']
 if node.attribute?('hopsworks') == true
   if node['hopsworks'].attribute?('user') == true
     hopsworks_user = node['hopsworks']['user']
