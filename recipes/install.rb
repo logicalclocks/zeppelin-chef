@@ -33,7 +33,7 @@ end
 directory node.zeppelin.dir do
   owner node.zeppelin.user
   group node.hops.group
-  mode "0775"
+  mode "0750"
   action :create
   not_if { File.directory?("#{node.zeppelin.dir}") }
 end
@@ -64,7 +64,7 @@ bash 'extract-zeppelin' do
                 wget http://snurran.sics.se/hops/zeppelin-interpreter.tgz
                 tar -xf zeppelin-interpreter.tgz
                 mv zeppelin-interpreter #{node.zeppelin.home}
-                chown -R #{node.zeppelin.user}:#{node.zeppelin.group} #{node.zeppelin.home}
+                chown -R #{node.zeppelin.user}:#{node.hops.group} #{node.zeppelin.home}
                 chmod 750 #{node.zeppelin.home}
                 touch #{zeppelin_down}
         EOH
