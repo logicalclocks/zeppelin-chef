@@ -16,6 +16,8 @@ default.zeppelin.base_dir            = node.zeppelin.dir + "/zeppelin"
 default.zeppelin.home                = node.zeppelin.dir + "/zeppelin-" + node.zeppelin.version
 
 default.zeppelin.url                 = "#{node.download_url}/#{node.zeppelin.name}.tar.gz"
+# sha-256 checksum
+default.zeppelin.checksum            = "3b36f626efa88d9bc2d2904330a1c4a8dbc7226643ffba21984efc5f8c5adf6a"
 
 default.zeppelin.executor_memory     = "512m"
 default.zeppelin.driver_memory       = "1g"

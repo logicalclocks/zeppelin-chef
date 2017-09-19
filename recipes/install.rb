@@ -45,7 +45,8 @@ cached_package_filename = "#{Chef::Config[:file_cache_path]}/#{base_package_file
 
 remote_file cached_package_filename do
   source package_url
-  owner "#{node.zeppelin.user}"
+  checksum node.zeppelin.checksum
+  owner node.zeppelin.user
   mode "0644"
   action :create_if_missing
 end
