@@ -7,19 +7,19 @@ bash 'kill_running_interpreters' do
 end
 
 
-directory node.zeppelin.home do
+directory node['zeppelin']['home'] do
   recursive true
   action :delete
   ignore_failure true
 end
 
-link node.zeppelin.base_dir do
+link node['zeppelin']['base_dir'] do
   action :delete
   ignore_failure true
 end
 
 
-package_url = "#{node.zeppelin.url}"
+package_url = "#{node['zeppelin']['url']}"
 base_package_filename = File.basename(package_url)
 cached_package_filename = "/tmp/#{base_package_filename}"
 

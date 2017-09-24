@@ -1,4 +1,4 @@
-#export ZEPPELIN_PORT=<%= node.zeppelin.port %>
+#export ZEPPELIN_PORT=<%= node['zeppelin']['port'] %>
 export ZEPPELIN_NOTEBOOK_DIR=notebook
 export ZEPPELIN_INTERPRETERS=spark:com.nflabs.zeppelin.spark.SparkInterpreter,sql:com.nflabs.zeppelin.spark.SparkSqlInterpreter,md:com.nflabs.zeppelin.markdown.Markdown,sh:com.nflabs.zeppelin.shell.ShellInterpreter,org.apache.zeppelin.flink.FlinkInterpreter,org.apache.zeppelin.livy.LivySparkInterpreter,org.apache.zeppelin.livy.LivyPySparkInterpreter,org.apache.zeppelin.livy.LivySparkRInterpreter,org.apache.zeppelin.livy.LivySparkSQLInterpreter
 export ZEPPELIN_INTERPRETER_DIR=interpreter
