@@ -138,7 +138,7 @@ directory "#{node['zeppelin']['home']}/logs" do
   action :create
 end
 
-directory "#{node.zeppelin.home}/Projects" do
+directory "#{node['zeppelin']['home']}/Projects" do
   owner node['zeppelin']['user']
   group node['hops']['group']
   mode "0770"
