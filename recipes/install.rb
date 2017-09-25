@@ -128,7 +128,6 @@ directory "#{node['zeppelin']['home']}/run" do
   owner node['zeppelin']['user']
   group node['zeppelin']['group']
   mode 0655
-  mode "755"
   action :create
 end
 
@@ -136,10 +135,15 @@ directory "#{node['zeppelin']['home']}/logs" do
   owner node['zeppelin']['user']
   group node['zeppelin']['group']
   mode 0655
-  mode "755"
   action :create
 end
 
+directory "#{node.zeppelin.home}/Projects" do
+  owner node['zeppelin']['user']
+  group node['hops']['group']
+  mode "0770"
+  action :create
+end
 
 
 # Support for 'R' in apache zeppelin
